@@ -30,6 +30,7 @@ export class PersistenceService{
             id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,},
             idProducto: DataTypes.INTEGER,
             idCliente: DataTypes.STRING,
+            esActivo: DataTypes.BOOLEAN,
             descripcion: DataTypes.STRING
         },{timestamps: false})
 

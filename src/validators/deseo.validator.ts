@@ -6,6 +6,7 @@ export const schemaDeseoPost = joi.object().keys({
     idProducto: joi.number().required(),
     idCliente: joi.number().default(1),
     descripcion: joi.string().required(),
+    esActivo: joi.boolean().default(true),
 })
 
 // define esquema deseo Put

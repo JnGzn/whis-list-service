@@ -3,6 +3,7 @@ export class DeseoData {
     public idProducto: number
     public idCliente: number
     public descripcion: string
+    public esActivo: boolean
 
     // constructor de la clase ProductoData
     constructor(){
@@ -10,5 +11,7 @@ export class DeseoData {
         this.descripcion = ''
         this.idProducto = 0
         this.idCliente = 0
+        this.esActivo = true
     }
+
 }

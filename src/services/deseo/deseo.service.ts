@@ -17,9 +17,15 @@ export class DeseoService extends ServiceTodo{
      * @returns deseo creado
      */
     async createDeseo(deseo: DeseoData) :Promise<DeseoData> {
+        this.deseo.id = deseo.id
+        this.deseo.idProducto = deseo.idProducto
+        this.deseo.idCliente = deseo.idCliente
+        this.deseo.descripcion = deseo.descripcion
+        this.deseo.esActivo = deseo.esActivo
         // creacion del deseo
         try {
-            const deseoCreado = await this.persistenceService.crearDeseo(deseo)
+            const deseoCreado = await this.persistenceService.crearDeseo(this.deseo)
+            this.deseo.id = deseoCreado.id
             return deseoCreado
 
         }catch(error){
