@@ -4,7 +4,7 @@ import { PersistenceService } from './persistence/persistence.service';
 
 export  class ServiceTodo {
 
-    private persistenceService: PersistenceService;
+    public persistenceService: PersistenceService;
 
     // Constructor Clase ServiceTodo
     constructor(){

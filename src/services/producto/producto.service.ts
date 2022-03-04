@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import { ServiceTodo } from '../app.service';
-import { ProductoData } from '../../models/todo.model';
+import { ProductoData } from '../../models/producto.model';
 
 
-export class Producto extends ServiceTodo{
+export class ProductoService extends ServiceTodo{
 
     private producto: ProductoData
 
@@ -13,12 +13,19 @@ export class Producto extends ServiceTodo{
     }
 
     /**
-     * Modifica el todo enviado, es importante tener el Id del todo
-     * @param {todo} todo:  todo a modificar
-     * @returns todo modificado
+     * Crear el preoducto enviado
+     * @param {ProductoData} producto:  producto a crear
+     * @returns producto creado
      */
-    async getProductos() :Promise<ProductoData> {
+    async getProductos() :Promise<ProductoData[]> {
         // some
-        return this.producto
+        try {
+            const productos = await this.persistenceService.buscarProductos()
+            return productos
+
+        }catch(error){
+            console.error(`ERROR ProductoService -> getProductos: ${JSON.stringify(error)}`);
+            throw new Error('internal server error')
+        }
     }
 }

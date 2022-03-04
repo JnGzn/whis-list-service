@@ -1,15 +1,12 @@
 // importacion librerias
 import express from 'express'
-import { Producto } from '../services/producto/producto.service';
-import { schemaProductoDelete, schemaProductoGet, schemaProductoPost, schemaProductoPut } from '../validators/producto.validator';
-
-
+import { ProductoService } from '../../services/producto/producto.service';
 
 export  class ProductoController {
 
     private productoService
     constructor(){
-        this.productoService = new Producto()
+        this.productoService = new ProductoService()
     }
     public routes(app: any){
 
