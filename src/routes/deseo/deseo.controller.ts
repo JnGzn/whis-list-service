@@ -1,7 +1,7 @@
 // importacion librerias
 import express from 'express'
 import { DeseoService } from '../../services/deseo/deseo.service';
-import { schemaDeseoPost } from '../../validators/deseo.validator';
+import { schemaDeseo, schemaDeseoPost } from '../../validators/deseo.validator';
 
 
 
@@ -82,5 +82,86 @@ export  class DeseoController {
             }
         })
 
+        // EndPoint DELETE
+        // elimina el deseo y lo retorna
+        app.delete('/deseo', async (req : express.Request, res: express.Response) => {
+
+            try {
+
+                // validacion datos
+                const data: any = req.body;
+                const validation = schemaDeseo.validate(data)
+
+                // Si hay error en la validacion
+                if(validation.error){
+                    console.error(`DeseoController -> DELETE deseo: error en la estructura: ${JSON.stringify(validation.error.message)}`);
+                    // Responde y finaliza la peticion
+                    res.status(422).json({
+                        data: null,
+                        err: validation.error.message
+                    }).end()
+                    return
+                }
+
+                // llamada al svc
+                const result = await this.deseoService.deleteDeseos(data)
+                // Responde y funaliza la peticion
+                res.status(200).json({
+                    data: result,
+                }).end()
+
+                // finaliza el metodo
+                return
+
+            } catch (error) {
+                console.error(`ProductoController -> POST /deseo:: ${JSON.stringify(error)}`)
+                // Responde y finaliza la peticion
+                res.status(500).json({
+                    data: null,
+                    err: error
+                }).end()
+            }
+        })
+
+        // EndPoint PUT
+        // modifica el deseo y lo retorna
+        app.put('/deseo', async (req : express.Request, res: express.Response) => {
+
+            try {
+
+                // validacion datos
+                const data: any = req.body;
+                const validation = schemaDeseo.validate(data)
+
+                // Si hay error en la validacion
+                if(validation.error){
+                    console.error(`DeseoController -> PUT deseo: error en la estructura: ${JSON.stringify(validation.error.message)}`);
+                    // Responde y finaliza la peticion
+                    res.status(422).json({
+                        data: null,
+                        err: validation.error.message
+                    }).end()
+                    return
+                }
+
+                // llamada al svc
+                const result = await this.deseoService.putDeseos(data)
+                // Responde y funaliza la peticion
+                res.status(200).json({
+                    data: result,
+                }).end()
+
+                // finaliza el metodo
+                return
+
+            } catch (error) {
+                console.error(`ProductoController -> POST /deseo:: ${JSON.stringify(error)}`)
+                // Responde y finaliza la peticion
+                res.status(500).json({
+                    data: null,
+                    err: error
+                }).end()
+            }
+        })
     }
 }

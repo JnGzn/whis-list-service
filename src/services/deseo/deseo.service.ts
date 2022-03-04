@@ -50,4 +50,37 @@ export class DeseoService extends ServiceTodo{
             throw new Error('internal server error')
         }
     }
+
+    /**
+     * Elimina el deseo enviado
+     * @param {DeseoData} producto:  deseo a eliminar
+     * @returns deseo eliminado
+     */
+     async deleteDeseos(deseo: DeseoData) :Promise<DeseoData> {
+        try {
+            await this.persistenceService.eliminarDeseos(deseo.id)
+            deseo.esActivo = false
+            return deseo
+
+        }catch(error){
+            console.error(`ERROR DeseoService -> deleteDeseos: ${JSON.stringify(error)}`);
+            throw new Error('internal server error')
+        }
+    }
+
+    /**
+     * ajusta el deseo enviado
+     * @param {DeseoData} deseo:  producto a modificar
+     * @returns deseo editado
+     */
+     async putDeseos(deseo: DeseoData) :Promise<DeseoData> {
+        try {
+            await this.persistenceService.modificarDeseos(deseo)
+            return deseo
+
+        }catch(error){
+            console.error(`ERROR DeseoService -> deleteDeseos: ${JSON.stringify(error)}`);
+            throw new Error('internal server error')
+        }
+    }
 }

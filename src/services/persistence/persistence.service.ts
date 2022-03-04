@@ -150,4 +150,52 @@ export class PersistenceService{
         }
     }
 
+    /**
+     * Consulta todos los deseos
+     * @returns deseos[]
+     */
+     public async eliminarDeseos(idDeseo: number){
+        try {
+            // abrir conexion
+            await this.conectarBD()
+
+            // ejecucion consulta
+            await this.deseos.update({
+                esActivo: false
+            },{where: {id:idDeseo }})
+
+
+            // cerrar conexion
+            await this.cerrarConexion()
+            return true
+        } catch (error) {
+            console.error(`ERROR PersistenceService -> buscarDeseos: ${JSON.stringify(error)}`);
+            throw new Error('internal server error')
+        }
+    }
+
+    /**
+     * Consulta todos los deseos
+     * @returns deseos[]
+     */
+     public async modificarDeseos(deseo: DeseoData){
+        try {
+            // abrir conexion
+            await this.conectarBD()
+
+            // ejecucion consulta
+            await this.deseos.update({
+                descripcion: deseo.descripcion,
+            },{where: {id:deseo.id }})
+
+
+            // cerrar conexion
+            await this.cerrarConexion()
+            return true
+        } catch (error) {
+            console.error(`ERROR PersistenceService -> buscarDeseos: ${JSON.stringify(error)}`);
+            throw new Error('internal server error')
+        }
+    }
+
 }
