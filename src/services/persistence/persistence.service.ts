@@ -16,7 +16,7 @@ export class PersistenceService{
         this.sequelize = new Sequelize(process.env.NOMBRE_BD || 'postgres', process.env.BASEDATOS_USER || 'postgres', process.env.BASEDATOS_PASSW, {
             host: process.env.BASEDATOS_HOST || 'localhost',
             dialect: 'postgres',
-            port: Number(process.env.BASEDATOS_PORT)
+            port: Number(process.env.BASEDATOS_PORT),
         })
         this.productos = this.sequelize.define('productos', {
             id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},

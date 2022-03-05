@@ -133,6 +133,9 @@ export  class DeseoController {
                 const data: any = req.body;
                 const validation = schemaDeseo.validate(data)
 
+                console.log(data);
+
+
                 // Si hay error en la validacion
                 if(validation.error){
                     console.error(`DeseoController -> PUT deseo: error en la estructura: ${JSON.stringify(validation.error.message)}`);
