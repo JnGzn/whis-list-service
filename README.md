@@ -5,7 +5,7 @@ Esta es una API que consulta una base de datos postgresql por medio de sequelize
 Ejecute los siguientes comandos 
 
 ```
-$ git clone https://github.com/JnGzn/whis-list-service.git
+$ git clone https://github.com/JnGzn/wish-list-service.git
 $ npm i
 ```
 
