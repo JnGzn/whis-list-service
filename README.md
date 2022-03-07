@@ -24,4 +24,15 @@ Ejecute el siguiente comando para iniciar las prubas con [Jest](https://jestjs.i
 $ npm run test
 ```
 
+## Variables de entorno
+En [.env](.env) puede modificar los siguiente datos
+```
+ERVER_PORT (puerto en que se va a ejecutar el servidor)
+BASEDATOS_HOST (host donde se encuentra la Bd)
+BASEDATOS_PORT (puerto donde se encuentra la Bd)
+NOMBRE_BD (nombre la Bd)
+BASEDATOS_USER  (usuario de conexion para la Bd)
+BASEDATOS_PASSW (contraseña de conexion para la Bd)
+```
+
 
