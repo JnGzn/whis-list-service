@@ -8,9 +8,9 @@ fotenv.config()
 
 export class PersistenceService{
 
-    private sequelize
-    private productos
-    private deseos
+    public sequelize
+    public productos
+    public deseos
 
     constructor(){
         this.sequelize = new Sequelize(process.env.NOMBRE_BD || 'postgres', process.env.BASEDATOS_USER || 'postgres', process.env.BASEDATOS_PASSW, {
@@ -55,15 +55,15 @@ export class PersistenceService{
     /**
      * Metodo que cierra la conexion de la BD
      */
-    public async cerrarConexion(){
-        try {
-            // await this.sequelize.close();
-          } catch (error) {
-            console.log(error);
-            console.error('ERROR PersistenceService -> cerrarConexion: ', JSON.stringify(error));
-            throw new Error('internal server error')
-        }
-    }
+    // public async cerrarConexion(){
+    //     try {
+    //         // await this.sequelize.close();
+    //       } catch (error) {
+    //         console.log(error);
+    //         console.error('ERROR PersistenceService -> cerrarConexion: ', JSON.stringify(error));
+    //         throw new Error('internal server error')
+    //     }
+    // }
 
     /**
      * Consulta todos los productos
@@ -84,7 +84,7 @@ export class PersistenceService{
             }
 
             // cerrar conexion
-            await this.cerrarConexion()
+            // await this.cerrarConexion()
             return arrayResponse
         } catch (error) {
             console.error(`ERROR PersistenceService -> buscarProductos: ${JSON.stringify(error)}`);
@@ -110,7 +110,7 @@ export class PersistenceService{
             })
 
              // cerrar conexion
-            await this.cerrarConexion()
+            // await this.cerrarConexion()
             return deseoCreado.toJSON()
         } catch (error) {
             console.error(`ERROR PersistenceService -> buscarProductos: ${JSON.stringify(error)}`);
@@ -142,7 +142,7 @@ export class PersistenceService{
             }
 
             // cerrar conexion
-            await this.cerrarConexion()
+            // await this.cerrarConexion()
             return arrayResponse
         } catch (error) {
             console.error(`ERROR PersistenceService -> buscarDeseos: ${JSON.stringify(error)}`);
@@ -166,7 +166,7 @@ export class PersistenceService{
 
 
             // cerrar conexion
-            await this.cerrarConexion()
+            // await this.cerrarConexion()
             return true
         } catch (error) {
             console.error(`ERROR PersistenceService -> buscarDeseos: ${JSON.stringify(error)}`);
@@ -190,7 +190,7 @@ export class PersistenceService{
 
 
             // cerrar conexion
-            await this.cerrarConexion()
+            // await this.cerrarConexion()
             return true
         } catch (error) {
             console.error(`ERROR PersistenceService -> buscarDeseos: ${JSON.stringify(error)}`);
